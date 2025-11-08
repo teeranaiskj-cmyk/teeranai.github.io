@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สุขสันต์วันเกิดน้องไกด์</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #fff5fa 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, #ffb3d9 0%, #ff99cc 100%);
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '🎉';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            top: -20px;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '🎈';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            top: -20px;
+            right: 10%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(255, 105, 180, 0.4);
+            animation: bounceIn 1s ease-out;
+        }
+
+        .emoji-decoration {
+            font-size: 3em;
+            display: inline-block;
+            animation: rotate 3s linear infinite;
+        }
+
+        .content-section {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .message-box {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.2);
+            position: relative;
+            margin-bottom: 60px;
+            border: 3px solid #ffb3d9;
+        }
+
+        .message-box::before {
+            content: '✨';
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            font-size: 60px;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .message-box::after {
+            content: '✨';
+            position: absolute;
+            top: -30px;
+            right: 20px;
+            font-size: 60px;
+            animation: sparkle 2s ease-in-out infinite 1s;
+        }
+
+        .message-text {
+            font-size: 1.4em;
+            line-height: 2;
+            color: #d6006d;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .cake-emoji {
+            font-size: 5em;
+            text-align: center;
+            animation: bounce 2s ease-in-out infinite;
+            display: block;
+            margin-top: 20px;
+        }
+
+        .gallery-section {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .gallery-title {
+            font-size: 2.5em;
+            color: #ff69b4;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .photo-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            padding: 15px;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .floating-sticker {
+            position: fixed;
+            font-size: 50px;
+            pointer-events: none;
+            z-index: 1000;
+            animation: floatAround 15s ease-in-out infinite;
+        }
+
+        .sticker1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .sticker2 { top: 20%; right: 5%; animation-delay: 2s; }
+        .sticker3 { bottom: 15%; left: 8%; animation-delay: 4s; }
+        .sticker4 { bottom: 25%; right: 8%; animation-delay: 6s; }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        @keyframes floatAround {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, 40px) rotate(90deg); }
+            50% { transform: translate(0, 80px) rotate(180deg); }
+            75% { transform: translate(-30px, 40px) rotate(270deg); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .message-text { font-size: 1.1em; }
+            .message-box { padding: 30px; }
+            .photo-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-sticker sticker1">🎈</div>
+    <div class="floating-sticker sticker2">🎁</div>
+    <div class="floating-sticker sticker3">🌟</div>
+    <div class="floating-sticker sticker4">💝</div>
+
+    <div class="header">
+        <h1>
+            <span class="emoji-decoration">🎂</span>
+            สุขสันต์วันเกิดน้องไกด์
+            <span class="emoji-decoration">🎉</span>
+        </h1>
+    </div>
+
+    <div class="content-section">
+        <div class="message-box">
+            <div class="message-text">
+                🌈 สุขสันต์วันเกิดน้องไกด์ 22 ปีแล้ว 🌈<br>
+                ขอให้มีความสุขในทุกวัน<br>
+                เป็นคนที่ดีของพ่อแม่และคนที่รัก 💕<br>
+                มีเงินทองใช้ตลอดปี 💰✨<br>
+                จะทำสิ่งใดคิดสิ่งใดขอให้สมปรารถนา 🌠<br>
+                เรียนได้เกรดเอ 📚🏆<br>
+                อยากฝึกงาน อยากทำงานที่ไหน<br>
+                ขอให้ได้ตามที่หวัง 🎯<br>
+                มีคนรักเยอะๆ 💗💗💗<br>
+                สุขภาพแข็งแรงไม่เจ็บป่วย 💪😊
+            </div>
+            <span class="cake-emoji">🎂🍰🧁</span>
+        </div>
+    </div>
+
+    <div class="gallery-section">
+        <h2 class="gallery-title">
+            📸 เวลาที่ผ่านมาเราทำอะไรไปบ้าง<br>
+            ยังจำได้ไหมแต่ละรูปถ่ายที่ไหนทำอะไรอยู่ 😄
+        </h2>
+        <div class="photo-grid">
+            <div class="photo-item">
+                <img src="https://drive.google.com/thumbnail?id=15gvbq0gQBDVXW0D0AspMiHiMMr8VUzNk&sz=w1000" alt="ความทรงจำ 1" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="https://drive.google.com/thumbnail?id=1MZ12nm08k5gASa-yDvmYFcMcrB8PCzH0&sz=w1000" alt="ความทรงจำ 2" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="https://drive.google.com/thumbnail?id=1Iom_4opnOO0h0ozmz4CzSmliQ-iT5NYs&sz=w1000" alt="ความทรงจำ 3" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="https://drive.google.com/thumbnail?id=1FsP5Uqnx9iaxnBE1t0BbVkm9dsWU-Uj_&sz=w1000" alt="ความทรงจำ 4" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="https://drive.google.com/thumbnail?id=13WaaM0gAn6EIKr7iA1mPD1f2LktIvCro&sz=w1000" alt="ความทรงจำ 5" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="https://drive.google.com/thumbnail?id=1CquxOmw12hSrueiDB8lLdFllWLT-wzk_&sz=w1000" alt="ความทรงจำ 6" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="https://drive.google.com/thumbnail?id=178UrtWvpeWbGR_li1CUKmQoZnF8E2VjT&sz=w1000" alt="ความทรงจำ 7" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="https://drive.google.com/thumbnail?id=1QTA1eSyhbauy0EDzHgJ5Tb5SfTlMLbNQ&sz=w1000" alt="ความทรงจำ 8" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="https://drive.google.com/thumbnail?id=1HgCCc-G673awjbrpoBeMm-C32H34xiXg&sz=w1000" alt="ความทรงจำ 9" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="https://drive.google.com/thumbnail?id=1Ef0LYaYarEOpvDfffWyebCtSvaut9LXi&sz=w1000" alt="ความทรงจำ 10" loading="lazy">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const photoItems = document.querySelectorAll('.photo-item');
+        photoItems.forEach((item, index) => {
+            item.style.animation = `fadeInUp 0.6s ease-out ${1.2 + index * 0.1}s forwards`;
+            item.style.opacity = '0';
+        });
+    </script>
+</body>
+</html>
